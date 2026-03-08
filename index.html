@@ -87,7 +87,6 @@
         .module-badge.launch{color:var(--accent);background:var(--accent-glow)}
         .module-badge.new{color:#ff6432;background:rgba(255,100,50,.1)}
 
-        /* AI Agent Spotlight */
         .ai-spotlight{padding:100px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative}
         .ai-spotlight::before{content:'';position:absolute;top:-50%;left:-30%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(0,212,255,0.04) 0%,transparent 60%);pointer-events:none}
         .ai-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
@@ -182,8 +181,10 @@
         .footer-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;transition:color .2s}
         .footer-links a:hover{color:var(--text-primary)}
 
-        .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease-out,transform .7s ease-out}
-        .reveal.visible{opacity:1;transform:translateY(0)}
+        /* Sections visible by default — animations are progressive enhancement */
+        .reveal{opacity:1;transform:none;transition:opacity .7s ease-out,transform .7s ease-out}
+        .reveal.animate{opacity:0;transform:translateY(40px)}
+        .reveal.visible{opacity:1;transform:none}
 
         @media(max-width:900px){
             .module-grid{grid-template-columns:repeat(2,1fr)}
@@ -345,7 +346,7 @@
             </section>
         </div>
 
-        <!-- AI ENGINE SPOTLIGHT -->
+        <!-- AI ENGINE -->
         <div class="ai-spotlight reveal" id="ai-engine">
             <div class="container">
                 <div class="ai-inner">
@@ -397,38 +398,23 @@
                     <div class="why-points">
                         <div class="why-point">
                             <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-                            <div>
-                                <h3>Truly Modular Pricing</h3>
-                                <p>Other platforms force all-or-nothing contracts. VinFlow lets you subscribe to individual modules per rooftop. Stop paying for software your team doesn't use.</p>
-                            </div>
+                            <div><h3>Truly Modular Pricing</h3><p>Other platforms force all-or-nothing contracts. VinFlow lets you subscribe to individual modules per rooftop. Stop paying for software your team doesn't use.</p></div>
                         </div>
                         <div class="why-point">
                             <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-                            <div>
-                                <h3>AI Agents, Not AI Gimmicks</h3>
-                                <p>Not a chatbot bolted onto a legacy system. VinFlow has specialized AI agents for every department that understand your data, learn your patterns, and work 24/7 alongside your team.</p>
-                            </div>
+                            <div><h3>AI Agents, Not AI Gimmicks</h3><p>Not a chatbot bolted onto a legacy system. VinFlow has specialized AI agents for every department that understand your data, learn your patterns, and work 24/7 alongside your team.</p></div>
                         </div>
                         <div class="why-point">
                             <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                            <div>
-                                <h3>Built-In Digital Retailing</h3>
-                                <p>Your dealer website, online buying experience, and customer portal aren't third-party bolt-ons — they're native modules sharing data directly with your DMS, CRM, and F&amp;I.</p>
-                            </div>
+                            <div><h3>Built-In Digital Retailing</h3><p>Your dealer website, online buying experience, and customer portal aren't third-party bolt-ons — they're native modules sharing data directly with your DMS, CRM, and F&amp;I.</p></div>
                         </div>
                         <div class="why-point">
                             <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-                            <div>
-                                <h3>Enterprise-Ready from Day One</h3>
-                                <p>Multi-rooftop groups manage all locations from one platform. Cascading settings, centralized user management, and cross-store analytics. Scale from 1 to 100 rooftops.</p>
-                            </div>
+                            <div><h3>Enterprise-Ready from Day One</h3><p>Multi-rooftop groups manage all locations from one platform. Cascading settings, centralized user management, and cross-store analytics. Scale from 1 to 100 rooftops.</p></div>
                         </div>
                         <div class="why-point">
                             <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                            <div>
-                                <h3>No Long-Term Contracts</h3>
-                                <p>Month-to-month subscriptions. Add or remove modules anytime. We earn your business every month.</p>
-                            </div>
+                            <div><h3>No Long-Term Contracts</h3><p>Month-to-month subscriptions. Add or remove modules anytime. We earn your business every month.</p></div>
                         </div>
                     </div>
                 </div>
@@ -444,14 +430,7 @@
                     <p class="section-desc">VinFlow combines the best of modern DMS platforms with true modular flexibility, built-in digital retailing, and department-level AI agents.</p>
                 </div>
                 <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th class="vinflow-col">VinFlow</th>
-                            <th>Legacy DMS</th>
-                            <th>Inventory-Only Tools</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Feature</th><th class="vinflow-col">VinFlow</th><th>Legacy DMS</th><th>Inventory-Only Tools</th></tr></thead>
                     <tbody>
                         <tr><td>Modular per-module pricing</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">Limited</span></td></tr>
                         <tr><td>AI agents per department</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td></tr>
@@ -490,26 +469,10 @@
                     <p class="section-desc">Dealerships handle sensitive financial data daily. VinFlow is engineered to meet SOC 2 and FTC Safeguards Rule compliance from day one — not as an afterthought.</p>
                 </div>
                 <div class="security-grid">
-                    <div class="security-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        <h3>AES-256 Encryption</h3>
-                        <p>All sensitive data encrypted at rest and in transit with AES-256-GCM</p>
-                    </div>
-                    <div class="security-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <h3>FTC Safeguards</h3>
-                        <p>Mapped to all 9 requirements of 16 CFR 314 with documented evidence</p>
-                    </div>
-                    <div class="security-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        <h3>Role-Based Access</h3>
-                        <p>Granular RBAC with full multi-tenant isolation per dealership</p>
-                    </div>
-                    <div class="security-card">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
-                        <h3>Complete Audit Trail</h3>
-                        <p>Every action logged with user, timestamp, IP, and context for compliance</p>
-                    </div>
+                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><h3>AES-256 Encryption</h3><p>All sensitive data encrypted at rest and in transit with AES-256-GCM</p></div>
+                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>FTC Safeguards</h3><p>Mapped to all 9 requirements of 16 CFR 314 with documented evidence</p></div>
+                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><h3>Role-Based Access</h3><p>Granular RBAC with full multi-tenant isolation per dealership</p></div>
+                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg><h3>Complete Audit Trail</h3><p>Every action logged with user, timestamp, IP, and context for compliance</p></div>
                 </div>
             </section>
         </div>
@@ -558,24 +521,10 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group"><label>Dealership Type <span class="req">*</span></label>
-                                <select name="dealershipType" required>
-                                    <option value="" disabled selected>Select type</option>
-                                    <option value="franchise">Franchise</option>
-                                    <option value="independent">Independent</option>
-                                    <option value="wholesaler">Wholesaler</option>
-                                    <option value="franchise_group">Franchise Group</option>
-                                    <option value="independent_group">Independent Group</option>
-                                </select>
+                                <select name="dealershipType" required><option value="" disabled selected>Select type</option><option value="franchise">Franchise</option><option value="independent">Independent</option><option value="wholesaler">Wholesaler</option><option value="franchise_group">Franchise Group</option><option value="independent_group">Independent Group</option></select>
                             </div>
                             <div class="form-group"><label>Number of Rooftops <span class="req">*</span></label>
-                                <select name="rooftops" required>
-                                    <option value="" disabled selected>Select</option>
-                                    <option value="1">1</option>
-                                    <option value="2-5">2–5</option>
-                                    <option value="6-15">6–15</option>
-                                    <option value="16-50">16–50</option>
-                                    <option value="50+">50+</option>
-                                </select>
+                                <select name="rooftops" required><option value="" disabled selected>Select</option><option value="1">1</option><option value="2-5">2&#8211;5</option><option value="6-15">6&#8211;15</option><option value="16-50">16&#8211;50</option><option value="50+">50+</option></select>
                             </div>
                         </div>
                         <button type="submit" class="form-submit">Request Early Access</button>
@@ -585,7 +534,7 @@
                         <p style="color:var(--text-secondary);font-weight:400;font-size:15px">We'll reach out with a personalized demo when VinFlow is ready for your dealership. Thank you for your interest.</p>
                     </div>
                 </div>
-                <p class="cta-note">For partnership and integration inquiries, email <a href="/cdn-cgi/l/email-protection#54243526203a3126273c3d242714223d3a32383b237a352424"><span class="__cf_email__" data-cfemail="e797869593898295948f8e9794a7918e89818b8890c9869797">[email&#160;protected]</span></a></p>
+                <p class="cta-note">For partnership and integration inquiries, email <a href="#" id="partner-email">loading...</a></p>
             </section>
         </div>
 
@@ -594,36 +543,72 @@
             <footer>
                 <div class="footer-left">
                     <a href="/" class="footer-brand"><div class="logo-icon">V</div><span>VinFlow</span></a>
-                    <span class="copyright">&copy; 2026 VinFlow Inc. All rights reserved.</span>
+                    <span class="copyright">&#169; 2026 VinFlow Inc. All rights reserved.</span>
                 </div>
                 <div class="footer-links">
-                    <a href="/cdn-cgi/l/email-protection#0e7e6f7c7a606b7c7d66677e7d4e78676068626179206f7e7e">Partnerships</a>
-                    <a href="/cdn-cgi/l/email-protection#a2cac7cececde2d4cbccc4cecdd58cc3d2d2">Contact</a>
+                    <a href="#" id="footer-partnerships">Partnerships</a>
+                    <a href="#" id="footer-contact">Contact</a>
                 </div>
             </footer>
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.1});
-        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    <script>
+        // Build email addresses in JS so Cloudflare can't detect and mangle them
+        (function(){
+            var d='vinflow.app';
+            var p='partnerships',h='hello';
+            var pe=document.getElementById('partner-email');
+            var fp=document.getElementById('footer-partnerships');
+            var fc=document.getElementById('footer-contact');
+            if(pe){pe.href='mai'+'lto:'+p+'@'+d;pe.textContent=p+'@'+d;}
+            if(fp){fp.href='mai'+'lto:'+p+'@'+d;}
+            if(fc){fc.href='mai'+'lto:'+h+'@'+d;}
+        })();
 
+        // Scroll reveal — progressive enhancement (content visible without JS)
+        var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){el.target.classList.remove('animate');el.target.classList.add('visible')}})},{threshold:.1});
+        document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('animate');obs.observe(el)});
+
+        // Phone mask
         document.getElementById('phone-input').addEventListener('input',function(e){
-            let x=e.target.value.replace(/\D/g,'').substring(0,10),f='';
+            var x=e.target.value.replace(/\D/g,'').substring(0,10),f='';
             if(x.length>0)f='('+x.substring(0,3);
             if(x.length>=3)f+=') '+x.substring(3,6);
             if(x.length>=6)f+='-'+x.substring(6,10);
             e.target.value=f;
         });
 
-        document.getElementById('early-access-form').addEventListener('submit',async(e)=>{
+        // Form submission to Formspree
+        document.getElementById('early-access-form').addEventListener('submit',function(e){
             e.preventDefault();
-            const form=e.target,btn=form.querySelector('.form-submit'),orig=btn.textContent;
+            var form=e.target,btn=form.querySelector('.form-submit'),orig=btn.textContent;
             btn.textContent='Submitting...';btn.disabled=true;
-            try{
-                const data=Object.fromEntries(new FormData(form));
-                const res=await fetch('https://formspree.io/f/mpqywrej',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
-                if(!res.ok)throw new Error('Submit failed');
+            var data=Object.fromEntries(new FormData(form));
+            fetch('https://formspree.io/f/mpqywrej',{
+                method:'POST',
+                headers:{'Content-Type':'application/json','Accept':'application/json'},
+                body:JSON.stringify(data)
+            }).then(function(res){
+                if(!res.ok)throw new Error('fail');
                 form.style.display='none';
                 document.getElementById('form-success').style.display='block';
-            }catch(err){btn.textContent=orig;btn.disabled=fa
+            }).catch(function(){
+                btn.textContent=orig;btn.disabled=false;
+                alert('Something went wrong. Please try again.');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){
+            a.addEventListener('click',function(e){
+                if(this.getAttribute('href').length>1){
+                    e.preventDefault();
+                    var t=document.querySelector(this.getAttribute('href'));
+                    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+                }
+            });
+        });
+    </script>
+</body>
+</html>
