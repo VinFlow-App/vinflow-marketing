@@ -3,589 +3,1161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VinFlow — One AI-Powered Platform for Your Entire Dealership</title>
-    <meta name="description" content="VinFlow is an AI-native modular DMS that connects your entire dealership — inventory, appraisals, CRM, digital retailing, service, and accounting. Pay only for the modules you use.">
+    <title>VinFlow — AI-Native Inventory Intelligence for Dealerships</title>
+    <meta name="description" content="VinFlow is an AI-native modular platform for vehicle acquisition, appraisal, inventory management, and reconditioning. Built for independent dealers, franchise groups, and wholesale operations.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="VinFlow — One AI-Powered Platform for Your Entire Dealership">
-    <meta property="og:description" content="AI-native. Modular. Enterprise-secure. The DMS built for independent dealers, franchise groups, and wholesale operations.">
+    <meta property="og:title" content="VinFlow — AI-Native Inventory Intelligence for Dealerships">
+    <meta property="og:description" content="AI-native. Modular. Built for modern dealerships.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vinflow.com">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230066ff'/><text x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='60' fill='white'>V</text></svg>">
+    <link rel="canonical" href="https://vinflow.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg:#06070a;--surface:#0c0e14;--surface-raised:#10131b;
-            --border:rgba(255,255,255,0.06);--border-light:rgba(255,255,255,0.1);
-            --text-primary:#f0f1f3;--text-secondary:rgba(255,255,255,0.55);--text-tertiary:rgba(255,255,255,0.3);
-            --accent:#00d4ff;--accent-glow:rgba(0,212,255,0.12);--accent-deep:#0066ff;
-            --gradient-start:#00d4ff;--gradient-end:#0066ff;
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #16161f;
+            --bg-card-hover: #1c1c28;
+            --border: #252530;
+            --border-hover: #3a3a4a;
+            --text-primary: #e8e8ed;
+            --text-secondary: #9090a0;
+            --text-muted: #606070;
+            --accent: #3b82f6;
+            --accent-dim: #2563eb;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --green: #22c55e;
+            --green-dim: rgba(34, 197, 94, 0.12);
+            --amber: #f59e0b;
+            --amber-dim: rgba(245, 158, 11, 0.12);
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
-        html{scroll-behavior:smooth}
-        body{font-family:'Instrument Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-        .ambient{position:fixed;inset:0;z-index:0;pointer-events:none}
-        .ambient::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:80%;background:radial-gradient(ellipse,rgba(0,212,255,0.05) 0%,transparent 70%);animation:drift 20s ease-in-out infinite}
-        .ambient::after{content:'';position:absolute;bottom:-30%;right:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(0,102,255,0.04) 0%,transparent 70%);animation:drift 25s ease-in-out infinite reverse}
-        @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(3%,-2%) scale(1.02)}66%{transform:translate(-2%,3%) scale(0.98)}}
-        .grid-overlay{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 60% 40% at 50% 30%,black 20%,transparent 100%)}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .page{position:relative;z-index:2}
-        .container{max-width:1120px;margin:0 auto;padding:0 32px}
-        section{padding:100px 0}
+        html { scroll-behavior: smooth; }
 
-        nav{padding:24px 0;display:flex;align-items:center;justify-content:space-between;animation:fadeDown .8s ease-out}
-        @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-        .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-        .logo-icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;font-family:'Syne',sans-serif}
-        .logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--text-primary)}
-        .nav-links{display:flex;align-items:center;gap:32px}
-        .nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:color .2s}
-        .nav-links a:hover{color:var(--text-primary)}
-        .nav-cta{font-size:13px!important;font-weight:600!important;color:#fff!important;background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));padding:8px 20px;border-radius:8px;transition:box-shadow .2s,transform .15s}
-        .nav-cta:hover{box-shadow:0 4px 20px rgba(0,212,255,.25);transform:translateY(-1px)}
-
-        .hero{padding:80px 0 100px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:32px}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--text-secondary);background:var(--surface);border:1px solid var(--border);padding:8px 20px;border-radius:100px;animation:fadeUp .8s ease-out .2s both}
-        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
-        @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,212,255,.4)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(0,212,255,0)}}
-        @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        .hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(36px,6.5vw,76px);line-height:1.05;letter-spacing:-.03em;max-width:860px;animation:fadeUp .8s ease-out .35s both}
-        .hero h1 .gradient{background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .hero-sub{font-size:clamp(16px,2vw,19px);line-height:1.65;color:var(--text-secondary);max-width:600px;animation:fadeUp .8s ease-out .5s both}
-        .hero-cta-row{display:flex;gap:16px;animation:fadeUp .8s ease-out .65s both;flex-wrap:wrap;justify-content:center}
-        .btn-primary{padding:14px 32px;font-size:15px;font-weight:600;font-family:'Instrument Sans',sans-serif;background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));color:#fff;border:none;border-radius:10px;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:8px}
-        .btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,255,.3)}
-        .btn-secondary{padding:14px 32px;font-size:15px;font-weight:600;font-family:'Instrument Sans',sans-serif;background:transparent;color:var(--text-primary);border:1px solid var(--border-light);border-radius:10px;cursor:pointer;text-decoration:none;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:8px}
-        .btn-secondary:hover{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.03)}
-        .hero-note{font-size:13px;color:var(--text-tertiary);animation:fadeUp .8s ease-out .75s both}
-
-        .trust-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;text-align:center}
-        .trust-bar p{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:20px}
-        .trust-logos{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
-        .trust-logo{font-size:14px;font-weight:600;color:rgba(255,255,255,.2)}
-
-        .section-label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-        .section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
-        .section-desc{font-size:17px;line-height:1.6;color:var(--text-secondary);max-width:560px}
-
-        .what-section .section-header{text-align:center;display:flex;flex-direction:column;align-items:center;margin-bottom:64px}
-        .module-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-        .module-card{background:var(--surface);padding:32px 28px;transition:background .2s}
-        .module-card:hover{background:var(--surface-raised)}
-        .module-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-        .module-icon svg{width:20px;height:20px;color:var(--accent)}
-        .module-icon.highlight{background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end))}
-        .module-icon.highlight svg{color:#fff}
-        .module-icon.hot{background:rgba(255,100,50,.12)}
-        .module-icon.hot svg{color:#ff6432}
-        .module-card h3{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
-        .module-card p{font-size:13px;line-height:1.5;color:var(--text-secondary)}
-        .module-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:12px}
-        .module-badge.launch{color:var(--accent);background:var(--accent-glow)}
-        .module-badge.new{color:#ff6432;background:rgba(255,100,50,.1)}
-
-        .ai-spotlight{padding:100px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative}
-        .ai-spotlight::before{content:'';position:absolute;top:-50%;left:-30%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(0,212,255,0.04) 0%,transparent 60%);pointer-events:none}
-        .ai-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-        .ai-left .section-title{margin-bottom:20px}
-        .ai-left .section-desc{margin-bottom:32px}
-        .ai-roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-        .ai-role{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:13px;font-weight:500;color:var(--text-secondary);transition:border-color .2s}
-        .ai-role:hover{border-color:var(--border-light)}
-        .ai-role svg{width:16px;height:16px;color:var(--accent);flex-shrink:0}
-        .ai-right{display:flex;flex-direction:column;gap:20px}
-        .ai-example{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s}
-        .ai-example:hover{border-color:var(--border-light)}
-        .ai-example-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-        .ai-example-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));flex-shrink:0}
-        .ai-example-header h4{font-size:14px;font-weight:700}
-        .ai-example p{font-size:13px;line-height:1.5;color:var(--text-secondary)}
-        .ai-example .ai-quote{font-style:italic;color:var(--accent);font-size:12.5px;margin-top:8px;padding-left:14px;border-left:2px solid rgba(0,212,255,.2)}
-
-        .why-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-        .why-points{display:flex;flex-direction:column;gap:32px}
-        .why-point{display:flex;gap:16px}
-        .why-point-icon{width:36px;height:36px;border-radius:8px;background:var(--surface-raised);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-        .why-point-icon svg{width:18px;height:18px;color:var(--accent)}
-        .why-point h3{font-size:15px;font-weight:700;margin-bottom:4px}
-        .why-point p{font-size:13.5px;line-height:1.5;color:var(--text-secondary)}
-
-        .comparison-section{text-align:center}
-        .comparison-section .section-header{display:flex;flex-direction:column;align-items:center;margin-bottom:56px}
-        .comparison-table{width:100%;border-collapse:collapse;text-align:left;border:1px solid var(--border);border-radius:16px;overflow:hidden}
-        .comparison-table thead{background:var(--surface)}
-        .comparison-table th{padding:16px 24px;font-size:13px;font-weight:700;color:var(--text-primary);border-bottom:1px solid var(--border)}
-        .comparison-table th:first-child{color:var(--text-secondary);font-weight:500}
-        .comparison-table th.vinflow-col{color:var(--accent)}
-        .comparison-table td{padding:14px 24px;font-size:13.5px;color:var(--text-secondary);border-bottom:1px solid var(--border);background:var(--bg)}
-        .comparison-table td:first-child{font-weight:500;color:var(--text-primary)}
-        .comparison-table .check{color:#22c55e;font-weight:700;font-size:16px}
-        .comparison-table .cross{color:rgba(255,255,255,.15);font-size:16px}
-        .comparison-table .partial{color:#f59e0b;font-size:13px}
-        .comparison-table .vinflow-col{background:rgba(0,212,255,.03)}
-
-        .stats-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 0}
-        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
-        .stat-item h3{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.02em;background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
-        .stat-item p{font-size:13px;color:var(--text-secondary);font-weight:500}
-
-        .security-section{text-align:center}
-        .security-section .section-header{display:flex;flex-direction:column;align-items:center;margin-bottom:56px}
-        .security-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-        .security-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 24px;text-align:center;transition:border-color .2s}
-        .security-card:hover{border-color:var(--border-light)}
-        .security-card svg{width:24px;height:24px;color:var(--accent);margin-bottom:14px}
-        .security-card h3{font-size:14px;font-weight:700;margin-bottom:6px}
-        .security-card p{font-size:13px;line-height:1.5;color:var(--text-secondary)}
-
-        .integrations-section{text-align:center}
-        .integrations-section .section-header{display:flex;flex-direction:column;align-items:center;margin-bottom:56px}
-        .integration-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:700px;margin:0 auto}
-        .integration-item{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;font-size:14px;font-weight:600;color:var(--text-secondary);transition:border-color .2s,color .2s}
-        .integration-item:hover{border-color:var(--border-light);color:var(--text-primary)}
-        .status-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0}
-        .integration-note{margin-top:24px;font-size:13px;color:var(--text-tertiary)}
-
-        .cta-section{text-align:center;padding:100px 0 120px}
-        .cta-section .section-desc{margin:0 auto 48px;text-align:center}
-        .early-access-form{max-width:560px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:40px 36px;text-align:left}
-        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-        .form-group{display:flex;flex-direction:column;gap:6px}
-        .form-group.full{grid-column:1/-1}
-        .form-group label{font-size:12px;font-weight:600;color:var(--text-secondary);letter-spacing:.02em}
-        .form-group label .req{color:var(--accent)}
-        .form-group input,.form-group select{padding:12px 14px;font-size:14px;font-family:'Instrument Sans',sans-serif;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);outline:none;transition:border-color .2s}
-        .form-group input::placeholder{color:rgba(255,255,255,.2)}
-        .form-group input:focus,.form-group select:focus{border-color:rgba(0,212,255,.3)}
-        .form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
-        .form-group select option{background:var(--bg);color:var(--text-primary)}
-        .form-submit{width:100%;padding:14px;font-size:15px;font-weight:600;font-family:'Instrument Sans',sans-serif;background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));color:#fff;border:none;border-radius:10px;cursor:pointer;transition:transform .15s,box-shadow .15s;margin-top:8px}
-        .form-submit:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,255,.3)}
-        .form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
-        .form-success-msg{display:none;text-align:center;padding:24px;color:var(--accent);font-weight:500;font-size:16px}
-        .form-success-msg p:first-child{font-size:20px;font-weight:700;margin-bottom:8px}
-        .cta-note{margin-top:24px;font-size:13px;color:var(--text-tertiary);text-align:center}
-        .cta-note a{color:var(--accent);text-decoration:none}
-        .cta-note a:hover{text-decoration:underline}
-
-        footer{padding:40px 0;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-        .footer-left{display:flex;align-items:center;gap:24px}
-        .footer-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
-        .footer-brand .logo-icon{width:28px;height:28px;font-size:12px;border-radius:6px}
-        .footer-brand span{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--text-primary)}
-        .copyright{font-size:13px;color:var(--text-tertiary)}
-        .footer-links{display:flex;gap:24px}
-        .footer-links a{font-size:13px;color:var(--text-secondary);text-decoration:none;transition:color .2s}
-        .footer-links a:hover{color:var(--text-primary)}
-
-        /* Sections visible by default — animations are progressive enhancement */
-        .reveal{opacity:1;transform:none;transition:opacity .7s ease-out,transform .7s ease-out}
-        .reveal.animate{opacity:0;transform:translateY(40px)}
-        .reveal.visible{opacity:1;transform:none}
-
-        @media(max-width:900px){
-            .module-grid{grid-template-columns:repeat(2,1fr)}
-            .security-grid{grid-template-columns:repeat(2,1fr)}
-            .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
-            .why-section{grid-template-columns:1fr;gap:48px}
-            .ai-inner{grid-template-columns:1fr;gap:48px}
-            .integration-grid{grid-template-columns:repeat(2,1fr)}
-            .comparison-table{font-size:12px}
-            .comparison-table th,.comparison-table td{padding:10px 14px}
-            .ai-roles{grid-template-columns:1fr}
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        @media(max-width:640px){
-            .container{padding:0 20px}
-            section{padding:72px 0}
-            nav{padding:20px 0}
-            .nav-links a:not(.nav-cta){display:none}
-            .hero{padding:48px 0 72px;gap:24px}
-            .module-grid{grid-template-columns:1fr}
-            .security-grid{grid-template-columns:1fr}
-            .integration-grid{grid-template-columns:1fr}
-            .form-row{grid-template-columns:1fr}
-            .early-access-form{padding:28px 24px}
-            .hero-cta-row{flex-direction:column;width:100%;max-width:320px}
-            .btn-primary,.btn-secondary{justify-content:center}
-            footer{flex-direction:column;gap:16px;text-align:center}
-            .footer-left{flex-direction:column;gap:8px}
-            .trust-logos{gap:24px}
-            .comparison-table{display:block;overflow-x:auto}
-            .ai-spotlight{padding:72px 0}
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+        .nav-logo-mark {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-cta {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 0.5rem 1.15rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--accent-dim); }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.7;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero .container { position: relative; z-index: 1; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse-dot 2s ease infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+        }
+        .hero h1 {
+            font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            max-width: 720px;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--accent), #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--accent-dim); transform: translateY(-1px); }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--text-secondary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .btn-ghost:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .stat-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* ── MODULES ── */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .module-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+        .module-card.featured {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.04) 100%);
+        }
+        .module-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+        }
+        .module-icon.blue { background: var(--accent-glow); color: var(--accent); }
+        .module-icon.green { background: var(--green-dim); color: var(--green); }
+        .module-icon.amber { background: var(--amber-dim); color: var(--amber); }
+        .module-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+        .module-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+        .module-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .module-features {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .module-features span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .module-features span::before {
+            content: '→';
+            color: var(--accent);
+            font-size: 0.75rem;
+        }
+
+        /* ── AI ENGINE ── */
+        .ai-section { background: var(--bg-secondary); }
+        .ai-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        .ai-agents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+        .ai-agent-chip {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .ai-agent-chip:hover {
+            border-color: var(--border-hover);
+        }
+        .ai-agent-chip .emoji {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .ai-agent-chip .name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .ai-examples {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .ai-example {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .ai-example-header {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        .ai-example p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .ai-example .quote {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        /* ── DIFFERENTIATORS ── */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        .diff-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+        }
+        .diff-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .diff-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── COMPARE TABLE ── */
+        .compare-section { background: var(--bg-secondary); }
+        .compare-table-wrap {
+            margin-top: 3rem;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .compare-table thead th {
+            background: var(--bg-card);
+            padding: 1rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .compare-table thead th:first-child { width: 40%; }
+        .compare-table thead th.highlight {
+            color: var(--accent);
+        }
+        .compare-table tbody td {
+            padding: 0.85rem 1.25rem;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .compare-table tbody tr:last-child td { border-bottom: none; }
+        .compare-table tbody td:first-child {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .check { color: var(--green); font-weight: 600; }
+        .cross { color: var(--text-muted); }
+        .partial { color: var(--amber); font-size: 0.82rem; }
+
+        /* ── SECURITY ── */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        .security-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+        }
+        .security-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .security-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .security-icon {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ── ARCHITECTURE ── */
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        .arch-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+        }
+        .arch-card h3 {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .arch-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── EARLY ACCESS FORM ── */
+        .ea-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+        }
+        .ea-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+        .ea-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+        }
+        .ea-form .full-width { grid-column: 1 / -1; }
+        .ea-form label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .ea-form input,
+        .ea-form select {
+            width: 100%;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.7rem 0.85rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .ea-form input:focus,
+        .ea-form select:focus {
+            border-color: var(--accent);
+        }
+        .ea-form select { cursor: pointer; appearance: auto; }
+        .ea-form button {
+            grid-column: 1 / -1;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+        .ea-form button:hover { background: var(--accent-dim); }
+        .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .form-success h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--green);
+        }
+        .form-success p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .footer-links a {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-secondary); }
+
+        /* ── ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border);
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+            }
+            .modules-grid,
+            .diff-grid { grid-template-columns: 1fr; }
+            .ai-layout { grid-template-columns: 1fr; }
+            .security-grid { grid-template-columns: repeat(2, 1fr); }
+            .arch-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .ea-layout { grid-template-columns: 1fr; }
+            .compare-table { font-size: 0.82rem; }
+            .compare-table thead th,
+            .compare-table tbody td { padding: 0.65rem 0.75rem; }
+            .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+        @media (max-width: 540px) {
+            .hero { padding: 8rem 1.25rem 4rem; }
+            section { padding: 4rem 1.25rem; }
+            .security-grid { grid-template-columns: 1fr; }
+            .ai-agents-grid { grid-template-columns: repeat(3, 1fr); }
+            .ea-form { grid-template-columns: 1fr; }
+            .ea-form .full-width { grid-column: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="ambient"></div>
-    <div class="grid-overlay"></div>
 
-    <div class="page">
-        <div class="container">
-            <nav>
-                <a href="/" class="logo"><div class="logo-icon">V</div><span class="logo-text">VinFlow</span></a>
-                <div class="nav-links">
-                    <a href="#platform">Platform</a>
-                    <a href="#ai-engine">AI Engine</a>
-                    <a href="#compare">Compare</a>
-                    <a href="#security">Security</a>
-                    <a href="#early-access" class="nav-cta">Request Early Access</a>
-                </div>
-            </nav>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="https://vinflow.com/" class="nav-logo">
+                <span class="nav-logo-mark">V</span>
+                VinFlow
+            </a>
+            <button class="nav-mobile-toggle" aria-label="Toggle menu">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="#platform">Platform</a></li>
+                <li><a href="#ai-engine">AI Engine</a></li>
+                <li><a href="#compare">Compare</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#early-access" class="nav-cta">Request Early Access</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- HERO -->
+    <!-- HERO -->
+    <section class="hero">
         <div class="container">
-            <section class="hero" id="top">
-                <div class="hero-badge"><span class="dot"></span>Launching Summer 2026</div>
-                <h1>One AI-powered platform<br>that connects <span class="gradient">your entire dealership.</span></h1>
-                <p class="hero-sub">Inventory. Appraisals. CRM. Digital Retailing. Service. Accounting. All unified, all modular — with an AI agent embedded in every department. Subscribe only to the modules you need.</p>
-                <div class="hero-cta-row">
-                    <a href="#early-access" class="btn-primary">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                        Request Early Access
-                    </a>
-                    <a href="#platform" class="btn-secondary">Explore the Platform</a>
-                </div>
-                <p class="hero-note">Built for independent dealers, franchise groups, and wholesale operations.</p>
-            </section>
-        </div>
-
-        <!-- TRUST -->
-        <div class="trust-bar reveal">
-            <div class="container">
-                <p>Integrated with industry-leading data providers</p>
-                <div class="trust-logos">
-                    <span class="trust-logo">KBB</span>
-                    <span class="trust-logo">Black Book</span>
-                    <span class="trust-logo">MMR / Manheim</span>
-                    <span class="trust-logo">NADA / J.D. Power</span>
-                    <span class="trust-logo">Carfax</span>
-                    <span class="trust-logo">Tekion DMS</span>
-                </div>
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                In active development
+            </div>
+            <h1>Smarter vehicle acquisition and <em>inventory intelligence.</em></h1>
+            <p class="hero-sub">VinFlow is an AI-native platform built for how dealerships actually buy, appraise, recondition, and manage inventory. Modular by design — subscribe only to what you need.</p>
+            <div class="hero-actions">
+                <a href="#early-access" class="btn-primary">Request Early Access &#8594;</a>
+                <a href="#platform" class="btn-ghost">Explore the Platform</a>
             </div>
         </div>
+    </section>
 
-        <!-- MODULES -->
-        <div class="container">
-            <section class="what-section reveal" id="platform">
-                <div class="section-header">
-                    <p class="section-label">The Platform</p>
-                    <h2 class="section-title">Every module a dealership needs.<br>Subscribe to only what you use.</h2>
-                    <p class="section-desc">VinFlow replaces fragmented tools with a unified, modular system. Turn modules on or off per rooftop. No bloated contracts. No six-figure annual commitments.</p>
-                </div>
-                <div class="module-grid">
-                    <div class="module-card">
-                        <div class="module-icon highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-                        <span class="module-badge launch">AI-Powered Game Changer</span>
-                        <h3>AI Appraisals</h3>
-                        <p>VIN in, buy/pass recommendation in seconds. AI-driven book values, history reports, recon estimates, and max bid calculations at auction scale. Learns from your buying patterns over time.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-                        <span class="module-badge launch">AI-Powered Game Changer</span>
-                        <h3>Inventory Management</h3>
-                        <p>Real-time tracking with AI-powered market pricing, aging analysis, automated repricing recommendations, and multi-location stock visibility across every rooftop.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-                        <span class="module-badge launch">AI-Powered Game Changer</span>
-                        <h3>CRM</h3>
-                        <p>AI-driven lead scoring, automated follow-up sequences, intelligent engagement timing, sentiment analysis, and personalized communication — your BDC on autopilot.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon hot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                        <span class="module-badge new">Game Changer</span>
-                        <h3>Dealer Website &amp; Digital Retailing</h3>
-                        <p>Full dealer website with online inventory browsing, payment calculators, trade-in tools, credit applications, eSign, and buy-online-pickup-in-store — the Carvana experience for every dealer.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon hot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12h-4V8"/><path d="M8 16l4-4"/></svg></div>
-                        <span class="module-badge new">Game Changer</span>
-                        <h3>Customer Portal</h3>
-                        <p>Your customers track purchases, service history, approve repairs, schedule appointments, make payments, and communicate with your team — all from their own dashboard.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-                        <h3>Desking &amp; F&amp;I</h3>
-                        <p>Deal structuring, payment scenarios, lender routing, menu presentation, eSign, and compliance — one streamlined workflow.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-                        <h3>Service &amp; Parts</h3>
-                        <p>Repair orders, technician dispatch, parts inventory, service scheduling, digital MPI, and customer approval workflows.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
-                        <h3>Reconditioning</h3>
-                        <p>Track every vehicle through recon with step-by-step workflows, vendor assignments, cost tracking, and time-to-line reporting.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                        <h3>Accounting</h3>
-                        <p>Deal posting, commission calculations, GL integration, month-end close, and financial reporting across all rooftops.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-                        <h3>Advanced Analytics</h3>
-                        <p>Real-time dashboards, cross-store performance metrics, market intelligence, and AI-driven recommendations for every department.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></div>
-                        <h3>Reporting</h3>
-                        <p>Customizable reports for every department. Scheduled delivery to management. Export to PDF, CSV, or integrate with BI tools.</p>
-                    </div>
-                    <div class="module-card">
-                        <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg></div>
-                        <h3>Dealer Trade</h3>
-                        <p>Trade vehicles between rooftops in your group or with partner dealerships. Automated paperwork and transport coordination.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- AI ENGINE -->
-        <div class="ai-spotlight reveal" id="ai-engine">
-            <div class="container">
-                <div class="ai-inner">
-                    <div class="ai-left">
-                        <p class="section-label">VinFlow AI Engine</p>
-                        <h2 class="section-title">An AI agent in<br>every department.</h2>
-                        <p class="section-desc">VinFlow's AI Engine isn't a single chatbot — it's a super agent with specialized sub-agents trained for every role in your dealership. Each agent understands your data, your processes, and your goals. They work 24/7 so your team can focus on what matters: selling cars and serving customers.</p>
-                        <div class="ai-roles">
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Buyer Agent</div>
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>BDC Agent</div>
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Service Advisor Agent</div>
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Accounting Agent</div>
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>F&amp;I Agent</div>
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Inventory Agent</div>
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Security Agent</div>
-                            <div class="ai-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>GM / Analytics Agent</div>
-                        </div>
-                    </div>
-                    <div class="ai-right">
-                        <div class="ai-example">
-                            <div class="ai-example-header"><div class="ai-example-dot"></div><h4>Service Advisor Agent</h4></div>
-                            <p>Reviews vehicle history and MPI results before the customer arrives. Identifies declined services from previous visits and suggests upsell opportunities ranked by urgency and revenue potential.</p>
-                            <p class="ai-quote">"This customer declined a transmission flush 6 months ago. Based on mileage, recommend presenting again — $180 avg ticket lift."</p>
-                        </div>
-                        <div class="ai-example">
-                            <div class="ai-example-header"><div class="ai-example-dot"></div><h4>Accounting Agent</h4></div>
-                            <p>Scans deal jackets and vendor invoices daily. Catches missing documents, flagged discrepancies, and unposted deals before month-end close becomes a scramble.</p>
-                            <p class="ai-quote">"3 deals from last week are missing payoff confirmations. 1 vendor invoice doesn't match the PO — $412 variance flagged."</p>
-                        </div>
-                        <div class="ai-example">
-                            <div class="ai-example-header"><div class="ai-example-dot"></div><h4>BDC Agent</h4></div>
-                            <p>Monitors incoming leads 24/7 and sends personalized, human-sounding responses within seconds. Qualifies leads, books appointments, and follows up on no-shows — automatically.</p>
-                            <p class="ai-quote">"Responded to 47 internet leads overnight. 12 appointments booked for today. 3 hot leads flagged for immediate salesperson follow-up."</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>4</h3>
+                <p>Core Modules</p>
             </div>
-        </div>
-
-        <!-- WHY VINFLOW -->
-        <div class="container">
-            <section class="reveal">
-                <div class="why-section">
-                    <div>
-                        <p class="section-label">Why VinFlow</p>
-                        <h2 class="section-title">Not another legacy DMS<br>with a fresh coat of paint.</h2>
-                        <p class="section-desc" style="margin-top:16px">We built VinFlow from the ground up with modern architecture — no decades of technical debt, no acquired bolt-on products pretending to be integrated.</p>
-                    </div>
-                    <div class="why-points">
-                        <div class="why-point">
-                            <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-                            <div><h3>Truly Modular Pricing</h3><p>Other platforms force all-or-nothing contracts. VinFlow lets you subscribe to individual modules per rooftop. Stop paying for software your team doesn't use.</p></div>
-                        </div>
-                        <div class="why-point">
-                            <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-                            <div><h3>AI Agents, Not AI Gimmicks</h3><p>Not a chatbot bolted onto a legacy system. VinFlow has specialized AI agents for every department that understand your data, learn your patterns, and work 24/7 alongside your team.</p></div>
-                        </div>
-                        <div class="why-point">
-                            <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                            <div><h3>Built-In Digital Retailing</h3><p>Your dealer website, online buying experience, and customer portal aren't third-party bolt-ons — they're native modules sharing data directly with your DMS, CRM, and F&amp;I.</p></div>
-                        </div>
-                        <div class="why-point">
-                            <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-                            <div><h3>Enterprise-Ready from Day One</h3><p>Multi-rooftop groups manage all locations from one platform. Cascading settings, centralized user management, and cross-store analytics. Scale from 1 to 100 rooftops.</p></div>
-                        </div>
-                        <div class="why-point">
-                            <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                            <div><h3>No Long-Term Contracts</h3><p>Month-to-month subscriptions. Add or remove modules anytime. We earn your business every month.</p></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- COMPARISON -->
-        <div class="container">
-            <section class="comparison-section reveal" id="compare">
-                <div class="section-header">
-                    <p class="section-label">How We Compare</p>
-                    <h2 class="section-title">See the difference.</h2>
-                    <p class="section-desc">VinFlow combines the best of modern DMS platforms with true modular flexibility, built-in digital retailing, and department-level AI agents.</p>
-                </div>
-                <table class="comparison-table">
-                    <thead><tr><th>Feature</th><th class="vinflow-col">VinFlow</th><th>Legacy DMS</th><th>Inventory-Only Tools</th></tr></thead>
-                    <tbody>
-                        <tr><td>Modular per-module pricing</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">Limited</span></td></tr>
-                        <tr><td>AI agents per department</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td></tr>
-                        <tr><td>AI-native architecture</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="partial">Bolted on</span></td><td><span class="partial">Limited</span></td></tr>
-                        <tr><td>Built-in dealer website</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="partial">Add-on</span></td><td><span class="cross">&#10005;</span></td></tr>
-                        <tr><td>Digital retailing (buy online)</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="partial">Add-on</span></td><td><span class="cross">&#10005;</span></td></tr>
-                        <tr><td>Customer self-service portal</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="partial">Limited</span></td><td><span class="cross">&#10005;</span></td></tr>
-                        <tr><td>Full DMS (Accounting, F&amp;I, Service)</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
-                        <tr><td>Independent &amp; franchise support</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="partial">Franchise focus</span></td><td><span class="check">&#10003;</span></td></tr>
-                        <tr><td>Month-to-month contracts</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">6mo min</span></td></tr>
-                        <tr><td>FTC Safeguards compliance</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="partial">Varies</span></td><td><span class="cross">&#10005;</span></td></tr>
-                        <tr><td>Open API ecosystem</td><td class="vinflow-col"><span class="check">&#10003;</span></td><td><span class="partial">Limited</span></td><td><span class="partial">Limited</span></td></tr>
-                    </tbody>
-                </table>
-            </section>
-        </div>
-
-        <!-- STATS -->
-        <div class="stats-bar reveal">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item"><h3>14+</h3><p>Modules available</p></div>
-                    <div class="stat-item"><h3>5,000+</h3><p>Appraisals per week capacity</p></div>
-                    <div class="stat-item"><h3>8</h3><p>Specialized AI agents</p></div>
-                    <div class="stat-item"><h3>&lt;3s</h3><p>VIN to recommendation</p></div>
-                </div>
+            <div class="stat-item">
+                <h3>&lt;3s</h3>
+                <p>VIN to Recommendation</p>
             </div>
-        </div>
-
-        <!-- SECURITY -->
-        <div class="container">
-            <section class="security-section reveal" id="security">
-                <div class="section-header">
-                    <p class="section-label">Enterprise Security</p>
-                    <h2 class="section-title">Your customer data is our<br>highest priority.</h2>
-                    <p class="section-desc">Dealerships handle sensitive financial data daily. VinFlow is engineered to meet SOC 2 and FTC Safeguards Rule compliance from day one — not as an afterthought.</p>
-                </div>
-                <div class="security-grid">
-                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><h3>AES-256 Encryption</h3><p>All sensitive data encrypted at rest and in transit with AES-256-GCM</p></div>
-                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>FTC Safeguards</h3><p>Mapped to all 9 requirements of 16 CFR 314 with documented evidence</p></div>
-                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><h3>Role-Based Access</h3><p>Granular RBAC with full multi-tenant isolation per dealership</p></div>
-                    <div class="security-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg><h3>Complete Audit Trail</h3><p>Every action logged with user, timestamp, IP, and context for compliance</p></div>
-                </div>
-            </section>
-        </div>
-
-        <!-- INTEGRATIONS -->
-        <div class="container">
-            <section class="integrations-section reveal" id="integrations">
-                <div class="section-header">
-                    <p class="section-label">Integrations &amp; Open APIs</p>
-                    <h2 class="section-title">Connected to the data<br>your dealership depends on.</h2>
-                    <p class="section-desc">Secure, authenticated API connections to every major data provider. Plus an open API ecosystem so your tools can connect to VinFlow.</p>
-                </div>
-                <div class="integration-grid">
-                    <div class="integration-item"><span class="status-dot"></span>Kelley Blue Book</div>
-                    <div class="integration-item"><span class="status-dot"></span>Black Book</div>
-                    <div class="integration-item"><span class="status-dot"></span>MMR / Manheim</div>
-                    <div class="integration-item"><span class="status-dot"></span>NADA / J.D. Power</div>
-                    <div class="integration-item"><span class="status-dot"></span>Carfax</div>
-                    <div class="integration-item"><span class="status-dot"></span>Tekion DMS</div>
-                </div>
-                <p class="integration-note">All integrations use encrypted credential storage with per-dealership isolation. DMS-agnostic adapter layer supports additional DMS providers.</p>
-            </section>
-        </div>
-
-        <!-- EARLY ACCESS FORM -->
-        <div class="container">
-            <section class="cta-section reveal" id="early-access">
-                <p class="section-label">Early Access</p>
-                <h2 class="section-title">Be among the first dealerships<br>to experience VinFlow.</h2>
-                <p class="section-desc">Tell us about your operation and we'll reach out with a personalized demo when VinFlow is ready for your dealership.</p>
-                <div class="early-access-form" id="form-container">
-                    <form id="early-access-form">
-                        <div class="form-row">
-                            <div class="form-group"><label>First Name <span class="req">*</span></label><input type="text" name="firstName" placeholder="John" required></div>
-                            <div class="form-group"><label>Last Name <span class="req">*</span></label><input type="text" name="lastName" placeholder="Smith" required></div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group"><label>Work Email <span class="req">*</span></label><input type="email" name="email" placeholder="john@dealership.com" required></div>
-                            <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" placeholder="(555) 555-5555" required id="phone-input"></div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group full"><label>Dealership Name <span class="req">*</span></label><input type="text" name="dealerName" placeholder="ABC Motors" required></div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group full"><label>State <span class="req">*</span></label>
-                                <select name="state" required><option value="" disabled selected>Select state</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group"><label>Dealership Type <span class="req">*</span></label>
-                                <select name="dealershipType" required><option value="" disabled selected>Select type</option><option value="franchise">Franchise</option><option value="independent">Independent</option><option value="wholesaler">Wholesaler</option><option value="franchise_group">Franchise Group</option><option value="independent_group">Independent Group</option></select>
-                            </div>
-                            <div class="form-group"><label>Number of Rooftops <span class="req">*</span></label>
-                                <select name="rooftops" required><option value="" disabled selected>Select</option><option value="1">1</option><option value="2-5">2&#8211;5</option><option value="6-15">6&#8211;15</option><option value="16-50">16&#8211;50</option><option value="50+">50+</option></select>
-                            </div>
-                        </div>
-                        <button type="submit" class="form-submit">Request Early Access</button>
-                    </form>
-                    <div class="form-success-msg" id="form-success">
-                        <p>You're on the list.</p>
-                        <p style="color:var(--text-secondary);font-weight:400;font-size:15px">We'll reach out with a personalized demo when VinFlow is ready for your dealership. Thank you for your interest.</p>
-                    </div>
-                </div>
-                <p class="cta-note">For partnership, integration, or general inquiries, email <a href="#" id="partner-email">loading...</a></p>
-            </section>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="container">
-            <footer>
-                <div class="footer-left">
-                    <a href="/" class="footer-brand"><div class="logo-icon">V</div><span>VinFlow</span></a>
-                    <span class="copyright">&#169; 2026 VinFlow Inc. All rights reserved.</span>
-                </div>
-                <div class="footer-links">
-                    <a href="#" id="footer-partnerships">Partnerships</a>
-                    <a href="#" id="footer-contact">General Inquiries</a>
-                </div>
-            </footer>
+            <div class="stat-item">
+                <h3>3</h3>
+                <p>Specialized AI Agents</p>
+            </div>
+            <div class="stat-item">
+                <h3>Multi</h3>
+                <p>Rooftop Ready</p>
+            </div>
         </div>
     </div>
 
+    <!-- PLATFORM / MODULES -->
+    <section id="platform">
+        <div class="container">
+            <div class="section-label reveal">The Platform</div>
+            <h2 class="section-title reveal">Four modules. Zero bloat.</h2>
+            <p class="section-subtitle reveal">Built for independent dealers, franchise groups, and wholesale operations. Each module works standalone or together — no bundled contracts, no modules you'll never use.</p>
+
+            <div class="modules-grid">
+                <div class="module-card featured reveal">
+                    <div class="module-icon blue">&#x1F50D;</div>
+                    <div class="module-tag">AI-Powered</div>
+                    <h3>AI Appraisals</h3>
+                    <p>VIN in, buy/pass recommendation out. AI-driven market values, vehicle history analysis, reconditioning estimates, and max bid calculations — at auction speed.</p>
+                    <div class="module-features">
+                        <span>Multi-source market data aggregation</span>
+                        <span>Configurable strategy profiles per dealer</span>
+                        <span>Point-in-time snapshots for audit trail</span>
+                        <span>Learns from your buying patterns over time</span>
+                    </div>
+                </div>
+
+                <div class="module-card featured reveal">
+                    <div class="module-icon green">&#x1F4CA;</div>
+                    <div class="module-tag">AI-Powered</div>
+                    <h3>Inventory Management</h3>
+                    <p>Real-time tracking with AI-powered market positioning, aging analysis, automated repricing recommendations, and multi-location visibility across every rooftop.</p>
+                    <div class="module-features">
+                        <span>Flow Score — proprietary 0-10 vehicle scoring</span>
+                        <span>Floorplan carrying cost tracking with alerts</span>
+                        <span>Cost-to-market derived from your strategy</span>
+                        <span>Multi-rooftop stock visibility</span>
+                    </div>
+                </div>
+
+                <div class="module-card reveal">
+                    <div class="module-icon amber">&#x1F527;</div>
+                    <h3>Reconditioning</h3>
+                    <p>Track every vehicle through recon with step-by-step workflows, vendor assignments, cost tracking, and time-to-frontline reporting. Know exactly where every unit stands.</p>
+                    <div class="module-features">
+                        <span>Stage-based workflow tracking</span>
+                        <span>Vendor assignment and cost allocation</span>
+                        <span>Time-to-frontline analytics</span>
+                    </div>
+                </div>
+
+                <div class="module-card reveal">
+                    <div class="module-icon blue">&#x1F3AF;</div>
+                    <h3>Vehicle Acquisition</h3>
+                    <p>Centralized buying center for auctions, trade-ins, and private-party acquisitions. AI-scored opportunities ranked by your dealership's strategy and profit targets.</p>
+                    <div class="module-features">
+                        <span>Auction integration with AI scoring</span>
+                        <span>Autonomous AI buying agent (roadmap)</span>
+                        <span>Strategy-matched opportunity ranking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI ENGINE -->
+    <section id="ai-engine" class="ai-section">
+        <div class="container">
+            <div class="section-label reveal">AI Engine</div>
+            <h2 class="section-title reveal">Specialized agents, not a generic chatbot.</h2>
+            <p class="section-subtitle reveal">Each AI agent is purpose-built for a specific role — trained on real dealership data, your strategy profiles, and market conditions. They work alongside your team, not as a novelty.</p>
+
+            <div class="ai-layout">
+                <div class="reveal">
+                    <div class="ai-agents-grid">
+                        <div class="ai-agent-chip">
+                            <span class="emoji">&#x1F3AF;</span>
+                            <span class="name">Buyer Agent</span>
+                        </div>
+                        <div class="ai-agent-chip">
+                            <span class="emoji">&#x1F4CA;</span>
+                            <span class="name">Inventory Agent</span>
+                        </div>
+                        <div class="ai-agent-chip">
+                            <span class="emoji">&#x1F50D;</span>
+                            <span class="name">Appraisal Agent</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">
+                            VinFlow's AI isn't a single model answering questions. It's a system of specialized agents that understand your inventory strategy, profit targets, market position, and buying history. Each agent operates within guardrails you configure — no black box decisions.
+                        </p>
+                    </div>
+                </div>
+                <div class="ai-examples reveal">
+                    <div class="ai-example">
+                        <div class="ai-example-header">Buyer Agent</div>
+                        <p>Scans auction run lists and scores every vehicle against your strategy profile. Identifies units that match your inventory gaps and profit targets before the lane opens.</p>
+                        <div class="quote">"14 vehicles match your acquisition criteria in tomorrow's ACV run. 3 are high-confidence buys under your max bid threshold."</div>
+                    </div>
+                    <div class="ai-example">
+                        <div class="ai-example-header">Inventory Agent</div>
+                        <p>Monitors aging, market shifts, and competitive pricing daily. Flags vehicles that need repricing or remarketing before carrying costs erode margin.</p>
+                        <div class="quote">"6 units crossed 45 days today. 2 have dropped below cost-to-market. Repricing recommendations ready for review."</div>
+                    </div>
+                    <div class="ai-example">
+                        <div class="ai-example-header">Appraisal Agent</div>
+                        <p>Aggregates market data, history reports, and reconditioning estimates into a single buy/pass recommendation with confidence scoring on every data point.</p>
+                        <div class="quote">"2019 RAM 1500 Laramie — Flow Score 7.2. Clean title, 1-owner. Market position: $2,400 below average. Recommend buy at $28,500."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY VINFLOW -->
+    <section id="why">
+        <div class="container">
+            <div class="section-label reveal">Why VinFlow</div>
+            <h2 class="section-title reveal">Built from scratch. No technical debt.</h2>
+            <p class="section-subtitle reveal">Not a legacy system with a fresh coat of paint. VinFlow was designed ground-up with modern architecture for the way dealerships operate today.</p>
+
+            <div class="diff-grid">
+                <div class="diff-card reveal">
+                    <h3>Truly Modular Pricing</h3>
+                    <p>Subscribe to individual modules per rooftop. Stop paying for software your team doesn't use. Add or remove modules anytime — month to month.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>AI-Native, Not AI-Bolted</h3>
+                    <p>Intelligence is embedded in the platform architecture — not a chatbot bolted onto a system built in the 2000s. Every data flow is designed for AI from day one.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>Dealer-Agnostic Strategy</h3>
+                    <p>Competitors force all dealers into one strategy. VinFlow accommodates any approach through configurable profiles — salvage title dealers operate entirely differently from retail.</p>
+                </div>
+                <div class="diff-card reveal">
+                    <h3>Multi-Rooftop from Day One</h3>
+                    <p>Cascading settings, centralized user management, and cross-store analytics. Built for groups scaling from 1 to 100 rooftops without architecture changes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section id="compare" class="compare-section">
+        <div class="container">
+            <div class="section-label reveal">How We Compare</div>
+            <h2 class="section-title reveal">See the difference.</h2>
+            <p class="section-subtitle reveal">VinFlow combines modern cloud-native architecture with AI intelligence and true modular flexibility.</p>
+
+            <div class="compare-table-wrap reveal">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="highlight">VinFlow</th>
+                            <th>Legacy DMS Tools</th>
+                            <th>Inventory-Only Tools</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AI-native architecture</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="partial">Bolted on</span></td>
+                            <td><span class="partial">Limited</span></td>
+                        </tr>
+                        <tr>
+                            <td>Modular per-module pricing</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="partial">Limited</span></td>
+                        </tr>
+                        <tr>
+                            <td>Configurable dealer strategy</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="partial">Partial</span></td>
+                        </tr>
+                        <tr>
+                            <td>Specialized AI agents</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Autonomous AI buying agent</td>
+                            <td><span class="check">Roadmap</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Floorplan cost tracking with alerts</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="partial">Basic</span></td>
+                            <td><span class="partial">Basic</span></td>
+                        </tr>
+                        <tr>
+                            <td>Multi-rooftop support</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="partial">Limited</span></td>
+                        </tr>
+                        <tr>
+                            <td>Month-to-month contracts</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                            <td><span class="partial">6mo min</span></td>
+                        </tr>
+                        <tr>
+                            <td>FTC Safeguards compliance</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="partial">Varies</span></td>
+                            <td><span class="cross">&#10005;</span></td>
+                        </tr>
+                        <tr>
+                            <td>Open API ecosystem</td>
+                            <td><span class="check">&#10003;</span></td>
+                            <td><span class="partial">Limited</span></td>
+                            <td><span class="partial">Limited</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section id="security">
+        <div class="container">
+            <div class="section-label reveal">Enterprise Security</div>
+            <h2 class="section-title reveal">Your data is our highest priority.</h2>
+            <p class="section-subtitle reveal">Dealerships handle sensitive financial data daily. VinFlow is engineered to meet SOC 2 and FTC Safeguards Rule compliance from day one — not as an afterthought.</p>
+
+            <div class="security-grid">
+                <div class="security-card reveal">
+                    <div class="security-icon">&#x1F512;</div>
+                    <h3>AES-256 Encryption</h3>
+                    <p>All sensitive data encrypted at rest and in transit with AES-256-GCM.</p>
+                </div>
+                <div class="security-card reveal">
+                    <div class="security-icon">&#x1F6E1;</div>
+                    <h3>FTC Safeguards</h3>
+                    <p>Mapped to all 9 requirements of 16 CFR 314 with documented evidence.</p>
+                </div>
+                <div class="security-card reveal">
+                    <div class="security-icon">&#x1F465;</div>
+                    <h3>Role-Based Access</h3>
+                    <p>Granular RBAC with full multi-tenant isolation per dealership.</p>
+                </div>
+                <div class="security-card reveal">
+                    <div class="security-icon">&#x1F4DD;</div>
+                    <h3>Complete Audit Trail</h3>
+                    <p>Every action logged with user, timestamp, IP, and context for compliance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="arch-section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-label reveal">Architecture</div>
+            <h2 class="section-title reveal">Modern stack. Open ecosystem.</h2>
+            <p class="section-subtitle reveal">Built on production-grade infrastructure designed for performance, scalability, and clean third-party integration.</p>
+
+            <div class="arch-grid">
+                <div class="arch-card reveal">
+                    <h3>Cloud-Native</h3>
+                    <p>Next.js frontend on Vercel, NestJS API on Railway, PostgreSQL with Prisma ORM. No self-hosted servers, no maintenance windows.</p>
+                </div>
+                <div class="arch-card reveal">
+                    <h3>Provider-Agnostic Adapters</h3>
+                    <p>DMS integrations use an adapter pattern — plug in any DMS (Tekion, CDK, Reynolds) without changing core logic. Same pattern for data providers.</p>
+                </div>
+                <div class="arch-card reveal">
+                    <h3>API-First Design</h3>
+                    <p>Every feature is API-backed. Open ecosystem for third-party integrations with per-dealership credential isolation and encrypted storage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EARLY ACCESS -->
+    <section id="early-access" class="ea-section">
+        <div class="container">
+            <div class="ea-layout">
+                <div class="reveal">
+                    <div class="section-label">Early Access</div>
+                    <h2 class="section-title">Be among the first.</h2>
+                    <p class="section-subtitle">Tell us about your operation and we'll reach out with a personalized demo when VinFlow is ready for your dealership.</p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;">For partnership or integration inquiries:<br>
+                        <a href="mailto:partners@vinflow.com" style="color: var(--accent); text-decoration: none;">partners@vinflow.com</a>
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">General inquiries:<br>
+                        <a href="mailto:sales@vinflow.com" style="color: var(--accent); text-decoration: none;">sales@vinflow.com</a>
+                    </p>
+                </div>
+                <div class="reveal">
+                    <form class="ea-form" id="ea-form" method="POST">
+                        <div>
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div>
+                            <label for="email">Work Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div>
+                            <label for="dealerName">Dealership Name *</label>
+                            <input type="text" id="dealerName" name="dealerName" required>
+                        </div>
+                        <div>
+                            <label for="state">State *</label>
+                            <select id="state" name="state" required>
+                                <option value="">Select state</option>
+                                <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="dealershipType">Dealership Type *</label>
+                            <select id="dealershipType" name="dealershipType" required>
+                                <option value="">Select type</option>
+                                <option>Franchise</option>
+                                <option>Independent</option>
+                                <option>Wholesaler</option>
+                                <option>Franchise Group</option>
+                                <option>Independent Group</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="rooftops">Number of Rooftops *</label>
+                            <select id="rooftops" name="rooftops" required>
+                                <option value="">Select</option>
+                                <option>1</option>
+                                <option>2–5</option>
+                                <option>6–15</option>
+                                <option>16–50</option>
+                                <option>50+</option>
+                            </select>
+                        </div>
+                        <button type="submit">Request Early Access</button>
+                    </form>
+                    <div class="form-success" id="form-success">
+                        <h3>You're on the list.</h3>
+                        <p>We'll reach out with a personalized demo when VinFlow is ready for your dealership.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <span class="nav-logo-mark" style="width:22px;height:22px;font-size:0.7rem;border-radius:5px;">V</span>
+                &copy; 2026 VinFlow Inc. All rights reserved.
+            </div>
+            <div class="footer-links">
+                <a href="mailto:partners@vinflow.com">Partnerships</a>
+                <a href="mailto:sales@vinflow.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Build email addresses in JS so Cloudflare can't detect and mangle them
-        (function(){
-            var d='vinflow.com';
-            var i='info';
-            var pe=document.getElementById('partner-email');
-            var fp=document.getElementById('footer-partnerships');
-            var fc=document.getElementById('footer-contact');
-            if(pe){pe.href='mai'+'lto:'+i+'@'+d;pe.textContent=i+'@'+d;}
-            if(fp){fp.href='mai'+'lto:'+i+'@'+d;}
-            if(fc){fc.href='mai'+'lto:'+i+'@'+d;}
-        })();
-
-        // Scroll reveal — progressive enhancement (content visible without JS)
-        var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){el.target.classList.remove('animate');el.target.classList.add('visible')}})},{threshold:.1});
-        document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('animate');obs.observe(el)});
-
-        // Phone mask
-        document.getElementById('phone-input').addEventListener('input',function(e){
-            var x=e.target.value.replace(/\D/g,'').substring(0,10),f='';
-            if(x.length>0)f='('+x.substring(0,3);
-            if(x.length>=3)f+=') '+x.substring(3,6);
-            if(x.length>=6)f+='-'+x.substring(6,10);
-            e.target.value=f;
+        // Mobile nav toggle
+        document.querySelector('.nav-mobile-toggle').addEventListener('click',function(){
+            document.querySelector('.nav-links').classList.toggle('open');
         });
 
-        // Form submission to Formspree
-        document.getElementById('early-access-form').addEventListener('submit',function(e){
+        // Scroll reveal
+        const obs=new IntersectionObserver(function(entries){
+            entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');}});
+        },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){
+            a.addEventListener('click',function(e){
+                e.preventDefault();
+                var t=document.querySelector(this.getAttribute('href'));
+                if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
+
+        // Form submission
+        var form=document.getElementById('ea-form');
+        var success=document.getElementById('form-success');
+        form.addEventListener('submit',function(e){
             e.preventDefault();
-            var form=e.target,btn=form.querySelector('.form-submit'),orig=btn.textContent;
-            btn.textContent='Submitting...';btn.disabled=true;
+            var btn=form.querySelector('button');
+            btn.textContent='Sending...';
+            btn.disabled=true;
             var data=Object.fromEntries(new FormData(form));
             fetch('https://formspree.io/f/mpqywrej',{
                 method:'POST',
@@ -594,21 +1166,11 @@
             }).then(function(res){
                 if(!res.ok)throw new Error('fail');
                 form.style.display='none';
-                document.getElementById('form-success').style.display='block';
+                success.style.display='block';
             }).catch(function(){
-                btn.textContent=orig;btn.disabled=false;
+                btn.textContent='Request Early Access';
+                btn.disabled=false;
                 alert('Something went wrong. Please try again.');
-            });
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(function(a){
-            a.addEventListener('click',function(e){
-                if(this.getAttribute('href').length>1){
-                    e.preventDefault();
-                    var t=document.querySelector(this.getAttribute('href'));
-                    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
-                }
             });
         });
     </script>
