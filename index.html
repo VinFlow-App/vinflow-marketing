@@ -37,7 +37,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -49,647 +48,161 @@
             overflow-x: hidden;
         }
 
-        /* ── NAV ── */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.02em;
-        }
-        .nav-logo-mark {
-            width: 28px;
-            height: 28px;
-            background: var(--accent);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: #fff;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--text-primary); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; }
+        .nav-logo-mark { width: 28px; height: 28px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: #fff; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--text-primary); }
-        .nav-cta {
-            background: var(--accent);
-            color: #fff !important;
-            padding: 0.5rem 1.15rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
+        .nav-cta { background: var(--accent); color: #fff !important; padding: 0.5rem 1.15rem; border-radius: 8px; font-size: 0.875rem; font-weight: 600; transition: background 0.2s; }
         .nav-cta:hover { background: var(--accent-dim); }
+        .nav-mobile-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; }
 
-        .nav-mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ── SECTIONS ── */
+        /* SECTIONS */
         section { padding: 6rem 2rem; }
         .container { max-width: 1100px; margin: 0 auto; }
-        .section-label {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 1rem;
-        }
-        .section-title {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        .section-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            max-width: 640px;
-            line-height: 1.7;
-        }
+        .section-label { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+        .section-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.05rem; color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
 
-        /* ── HERO ── */
-        .hero {
-            padding: 10rem 2rem 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
+        /* HERO */
+        .hero { padding: 10rem 2rem 6rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none; }
         .hero .container { position: relative; z-index: 1; }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 0.4rem 1rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        .hero-badge-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--green);
-            animation: pulse-dot 2s ease infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
-            50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-        }
-        .hero h1 {
-            font-size: clamp(2.25rem, 5.5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 1.15;
-            max-width: 720px;
-            margin-bottom: 1.5rem;
-        }
-        .hero h1 em {
-            font-style: normal;
-            background: linear-gradient(135deg, var(--accent), #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-sub {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 560px;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-        }
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-        }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 2rem; }
+        .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse-dot 2s ease infinite; }
+        @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); } 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } }
+        .hero h1 { font-size: clamp(2.25rem, 5.5vw, 3.5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.15; max-width: 720px; margin-bottom: 1.5rem; }
+        .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--accent), #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-sub { font-size: 1.15rem; color: var(--text-secondary); max-width: 560px; line-height: 1.7; margin-bottom: 2.5rem; }
+        .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.75rem 1.5rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
         .btn-primary:hover { background: var(--accent-dim); transform: translateY(-1px); }
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            color: var(--text-secondary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-decoration: none;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
-        }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--text-secondary); padding: 0.75rem 1.5rem; border-radius: 10px; font-size: 0.95rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: all 0.2s; }
         .btn-ghost:hover { border-color: var(--border-hover); color: var(--text-primary); }
 
-        /* ── STATS BAR ── */
-        .stats-bar {
-            padding: 3rem 2rem;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: var(--bg-secondary);
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .stat-item h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-        .stat-item p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
+        /* STATS BAR */
+        .stats-bar { padding: 3rem 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-secondary); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; text-align: center; }
+        .stat-item h3 { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
+        .stat-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.06em; }
 
-        /* ── MODULES ── */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-            margin-top: 3rem;
-        }
-        .module-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 2rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .module-card:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-            transform: translateY(-2px);
-        }
-        .module-card.featured {
-            border-color: rgba(59, 130, 246, 0.3);
-            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.04) 100%);
-        }
-        .module-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 1.25rem;
-        }
+        /* MANIFESTO */
+        .manifesto { padding: 6rem 2rem; text-align: center; border-bottom: 1px solid var(--border); background: var(--bg-primary); position: relative; overflow: hidden; }
+        .manifesto::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%); pointer-events: none; }
+        .manifesto .container { position: relative; z-index: 1; }
+        .manifesto-headline { font-size: clamp(1.75rem, 4.5vw, 3rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.15; margin-bottom: 1.75rem; }
+        .manifesto-headline em { font-style: normal; background: linear-gradient(135deg, var(--accent), #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .manifesto-body { font-size: 1.15rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto 1rem; line-height: 1.7; }
+        .manifesto-kicker { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: 0.5rem; }
+
+        /* MODULES */
+        .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
+        .module-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s; position: relative; }
+        .module-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-2px); }
+        .module-card.featured { border-color: rgba(59, 130, 246, 0.3); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.04) 100%); }
+        .module-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.25rem; }
         .module-icon.blue { background: var(--accent-glow); color: var(--accent); }
         .module-icon.green { background: var(--green-dim); color: var(--green); }
         .module-icon.amber { background: var(--amber-dim); color: var(--amber); }
-        .module-tag {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            background: var(--accent-glow);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            margin-bottom: 0.75rem;
-        }
-        .module-card h3 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-        .module-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        .module-features {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-        .module-features span {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .module-features span::before {
-            content: '→';
-            color: var(--accent);
-            font-size: 0.75rem;
-        }
+        .module-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--accent-glow); padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem; }
+        .module-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+        .module-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+        .module-features { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+        .module-features span { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+        .module-features span::before { content: '\2192'; color: var(--accent); font-size: 0.75rem; }
 
-        /* ── AI ENGINE ── */
+        /* AI ENGINE */
         .ai-section { background: var(--bg-secondary); }
-        .ai-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-            align-items: start;
-        }
-        .ai-agents-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-        }
-        .ai-agent-chip {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1rem;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        .ai-agent-chip:hover {
-            border-color: var(--border-hover);
-        }
-        .ai-agent-chip .emoji {
-            font-size: 1.5rem;
-            display: block;
-            margin-bottom: 0.4rem;
-        }
-        .ai-agent-chip .name {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-        }
-        .ai-examples {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-        .ai-example {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-        .ai-example-header {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-        }
-        .ai-example p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        .ai-example .quote {
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 0.75rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--border);
-        }
+        .ai-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; align-items: start; }
+        .ai-agents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+        .ai-agent-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; text-align: center; transition: all 0.2s; }
+        .ai-agent-chip:hover { border-color: var(--border-hover); }
+        .ai-agent-chip .emoji { font-size: 1.5rem; display: block; margin-bottom: 0.4rem; }
+        .ai-agent-chip .name { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
+        .ai-examples { display: flex; flex-direction: column; gap: 1.25rem; }
+        .ai-example { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+        .ai-example-header { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem; }
+        .ai-example p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        .ai-example .quote { font-style: italic; color: var(--text-muted); font-size: 0.85rem; margin-top: 0.75rem; padding-left: 1rem; border-left: 2px solid var(--border); }
 
-        /* ── DIFFERENTIATORS ── */
-        .diff-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-            margin-top: 3rem;
-        }
-        .diff-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 2rem;
-        }
-        .diff-card h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        .diff-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+        /* DIFFERENTIATORS */
+        .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
+        .diff-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+        .diff-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .diff-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
 
-        /* ── COMPARE TABLE ── */
+        /* COMPARE */
         .compare-section { background: var(--bg-secondary); }
-        .compare-table-wrap {
-            margin-top: 3rem;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            overflow: hidden;
-        }
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .compare-table thead th {
-            background: var(--bg-card);
-            padding: 1rem 1.25rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
+        .compare-table-wrap { margin-top: 3rem; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+        .compare-table { width: 100%; border-collapse: collapse; }
+        .compare-table thead th { background: var(--bg-card); padding: 1rem 1.25rem; font-size: 0.85rem; font-weight: 600; text-align: left; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
         .compare-table thead th:first-child { width: 40%; }
-        .compare-table thead th.highlight {
-            color: var(--accent);
-        }
-        .compare-table tbody td {
-            padding: 0.85rem 1.25rem;
-            font-size: 0.88rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
+        .compare-table thead th.highlight { color: var(--accent); }
+        .compare-table tbody td { padding: 0.85rem 1.25rem; font-size: 0.88rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
         .compare-table tbody tr:last-child td { border-bottom: none; }
-        .compare-table tbody td:first-child {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
+        .compare-table tbody td:first-child { font-weight: 500; color: var(--text-primary); }
         .check { color: var(--green); font-weight: 600; }
         .cross { color: var(--text-muted); }
         .partial { color: var(--amber); font-size: 0.82rem; }
 
-        /* ── SECURITY ── */
-        .security-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
-            margin-top: 3rem;
-        }
-        .security-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.75rem;
-        }
-        .security-card h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-        }
-        .security-card p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-        .security-icon {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
+        /* SECURITY */
+        .security-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
+        .security-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+        .security-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+        .security-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+        .security-icon { font-size: 1.4rem; margin-bottom: 1rem; }
 
-        /* ── ARCHITECTURE ── */
-        .arch-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 3rem;
-        }
-        .arch-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.75rem;
-        }
-        .arch-card h3 {
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-        .arch-card p {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+        /* ARCHITECTURE */
+        .arch-section { background: var(--bg-secondary); }
+        .arch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+        .arch-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+        .arch-card h3 { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500; color: var(--accent); margin-bottom: 0.5rem; }
+        .arch-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
-        /* ── EARLY ACCESS FORM ── */
-        .ea-section {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-        }
-        .ea-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 4rem;
-            align-items: start;
-            margin-top: 2rem;
-        }
-        .ea-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.85rem;
-        }
+        /* EARLY ACCESS */
+        .ea-section { background: var(--bg-secondary); border-top: 1px solid var(--border); }
+        .ea-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
+        .ea-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
         .ea-form .full-width { grid-column: 1 / -1; }
-        .ea-form label {
-            display: block;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 0.3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .ea-form input,
-        .ea-form select {
-            width: 100%;
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.7rem 0.85rem;
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            transition: border-color 0.2s;
-            outline: none;
-        }
-        .ea-form input:focus,
-        .ea-form select:focus {
-            border-color: var(--accent);
-        }
+        .ea-form label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--text-muted); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; }
+        .ea-form input, .ea-form select { width: 100%; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.85rem; font-family: var(--font-body); font-size: 0.9rem; color: var(--text-primary); transition: border-color 0.2s; outline: none; }
+        .ea-form input:focus, .ea-form select:focus { border-color: var(--accent); }
         .ea-form select { cursor: pointer; appearance: auto; }
-        .ea-form button {
-            grid-column: 1 / -1;
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            padding: 0.85rem;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 0.5rem;
-        }
+        .ea-form button { grid-column: 1 / -1; background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 0.85rem; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
         .ea-form button:hover { background: var(--accent-dim); }
         .ea-form button:disabled { opacity: 0.6; cursor: not-allowed; }
-        .form-success {
-            display: none;
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-        .form-success h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--green);
-        }
-        .form-success p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+        .form-success { display: none; text-align: center; padding: 3rem 1rem; }
+        .form-success h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--green); }
+        .form-success p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        /* ── FOOTER ── */
-        footer {
-            padding: 3rem 2rem;
-            border-top: 1px solid var(--border);
-        }
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-        .footer-links a {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+        /* FOOTER */
+        footer { padding: 3rem 2rem; border-top: 1px solid var(--border); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .footer-left { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); }
+        .footer-links { display: flex; gap: 2rem; }
+        .footer-links a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
         .footer-links a:hover { color: var(--text-secondary); }
 
-        /* ── ANIMATIONS ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* ── RESPONSIVE ── */
+        /* RESPONSIVE */
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .nav-mobile-toggle { display: block; }
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: var(--bg-primary);
-                border-bottom: 1px solid var(--border);
-                padding: 1.5rem 2rem;
-                gap: 1rem;
-            }
-            .modules-grid,
-            .diff-grid { grid-template-columns: 1fr; }
+            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg-primary); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1rem; }
+            .modules-grid, .diff-grid { grid-template-columns: 1fr; }
             .ai-layout { grid-template-columns: 1fr; }
             .security-grid { grid-template-columns: repeat(2, 1fr); }
             .arch-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .ea-layout { grid-template-columns: 1fr; }
             .compare-table { font-size: 0.82rem; }
-            .compare-table thead th,
-            .compare-table tbody td { padding: 0.65rem 0.75rem; }
+            .compare-table thead th, .compare-table tbody td { padding: 0.65rem 0.75rem; }
             .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
         }
         @media (max-width: 540px) {
@@ -704,13 +217,9 @@
 </head>
 <body>
 
-    <!-- NAV -->
     <nav>
         <div class="nav-inner">
-            <a href="https://vinflow.com/" class="nav-logo">
-                <span class="nav-logo-mark">V</span>
-                VinFlow
-            </a>
+            <a href="https://vinflow.com/" class="nav-logo"><span class="nav-logo-mark">V</span>VinFlow</a>
             <button class="nav-mobile-toggle" aria-label="Toggle menu">&#9776;</button>
             <ul class="nav-links">
                 <li><a href="#platform">Platform</a></li>
@@ -722,13 +231,9 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                In active development
-            </div>
+            <div class="hero-badge"><span class="hero-badge-dot"></span>In active development</div>
             <h1>Smarter vehicle acquisition and <em>inventory intelligence.</em></h1>
             <p class="hero-sub">VinFlow is an AI-native platform built for how dealerships actually buy, appraise, recondition, and manage inventory. Modular by design — subscribe only to what you need.</p>
             <div class="hero-actions">
@@ -738,35 +243,28 @@
         </div>
     </section>
 
-    <!-- STATS -->
     <div class="stats-bar">
         <div class="stats-grid">
-            <div class="stat-item">
-                <h3>4</h3>
-                <p>Core Modules</p>
-            </div>
-            <div class="stat-item">
-                <h3>&lt;3s</h3>
-                <p>VIN to Recommendation</p>
-            </div>
-            <div class="stat-item">
-                <h3>3</h3>
-                <p>Specialized AI Agents</p>
-            </div>
-            <div class="stat-item">
-                <h3>Multi</h3>
-                <p>Rooftop Ready</p>
-            </div>
+            <div class="stat-item"><h3>4</h3><p>Core Modules</p></div>
+            <div class="stat-item"><h3>&lt;3s</h3><p>VIN to Recommendation</p></div>
+            <div class="stat-item"><h3>3</h3><p>Specialized AI Agents</p></div>
+            <div class="stat-item"><h3>Multi</h3><p>Rooftop Ready</p></div>
         </div>
     </div>
 
-    <!-- PLATFORM / MODULES -->
+    <section class="manifesto">
+        <div class="container">
+            <h2 class="manifesto-headline reveal">They have data scientists.<br><em>You have VinFlow.</em></h2>
+            <p class="manifesto-body reveal">The same acquisition intelligence. The same pricing firepower. None of the overhead. Powered by real-time market data, not yesterday's averages.</p>
+            <p class="manifesto-kicker reveal">Built for dealers who refuse to be outbought.</p>
+        </div>
+    </section>
+
     <section id="platform">
         <div class="container">
             <div class="section-label reveal">The Platform</div>
             <h2 class="section-title reveal">Four modules. Zero bloat.</h2>
             <p class="section-subtitle reveal">Built for independent dealers, franchise groups, and wholesale operations. Each module works standalone or together — no bundled contracts, no modules you'll never use.</p>
-
             <div class="modules-grid">
                 <div class="module-card featured reveal">
                     <div class="module-icon blue">&#x1F50D;</div>
@@ -780,7 +278,6 @@
                         <span>Learns from your buying patterns over time</span>
                     </div>
                 </div>
-
                 <div class="module-card featured reveal">
                     <div class="module-icon green">&#x1F4CA;</div>
                     <div class="module-tag">AI-Powered</div>
@@ -793,7 +290,6 @@
                         <span>Multi-rooftop stock visibility</span>
                     </div>
                 </div>
-
                 <div class="module-card reveal">
                     <div class="module-icon amber">&#x1F527;</div>
                     <h3>Reconditioning</h3>
@@ -804,7 +300,6 @@
                         <span>Time-to-frontline analytics</span>
                     </div>
                 </div>
-
                 <div class="module-card reveal">
                     <div class="module-icon blue">&#x1F3AF;</div>
                     <h3>Vehicle Acquisition</h3>
@@ -819,33 +314,20 @@
         </div>
     </section>
 
-    <!-- AI ENGINE -->
     <section id="ai-engine" class="ai-section">
         <div class="container">
             <div class="section-label reveal">AI Engine</div>
             <h2 class="section-title reveal">Specialized agents, not a generic chatbot.</h2>
             <p class="section-subtitle reveal">Each AI agent is purpose-built for a specific role — trained on real dealership data, your strategy profiles, and market conditions. They work alongside your team, not as a novelty.</p>
-
             <div class="ai-layout">
                 <div class="reveal">
                     <div class="ai-agents-grid">
-                        <div class="ai-agent-chip">
-                            <span class="emoji">&#x1F3AF;</span>
-                            <span class="name">Buyer Agent</span>
-                        </div>
-                        <div class="ai-agent-chip">
-                            <span class="emoji">&#x1F4CA;</span>
-                            <span class="name">Inventory Agent</span>
-                        </div>
-                        <div class="ai-agent-chip">
-                            <span class="emoji">&#x1F50D;</span>
-                            <span class="name">Appraisal Agent</span>
-                        </div>
+                        <div class="ai-agent-chip"><span class="emoji">&#x1F3AF;</span><span class="name">Buyer Agent</span></div>
+                        <div class="ai-agent-chip"><span class="emoji">&#x1F4CA;</span><span class="name">Inventory Agent</span></div>
+                        <div class="ai-agent-chip"><span class="emoji">&#x1F50D;</span><span class="name">Appraisal Agent</span></div>
                     </div>
                     <div style="margin-top: 2rem;">
-                        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">
-                            VinFlow's AI isn't a single model answering questions. It's a system of specialized agents that understand your inventory strategy, profit targets, market position, and buying history. Each agent operates within guardrails you configure — no black box decisions.
-                        </p>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">VinFlow's AI isn't a single model answering questions. It's a system of specialized agents that understand your inventory strategy, profit targets, market position, and buying history. Each agent operates within guardrails you configure — no black box decisions.</p>
                     </div>
                 </div>
                 <div class="ai-examples reveal">
@@ -869,175 +351,72 @@
         </div>
     </section>
 
-    <!-- WHY VINFLOW -->
     <section id="why">
         <div class="container">
             <div class="section-label reveal">Why VinFlow</div>
             <h2 class="section-title reveal">Built from scratch. No technical debt.</h2>
             <p class="section-subtitle reveal">Not a legacy system with a fresh coat of paint. VinFlow was designed ground-up with modern architecture for the way dealerships operate today.</p>
-
             <div class="diff-grid">
-                <div class="diff-card reveal">
-                    <h3>Truly Modular Pricing</h3>
-                    <p>Subscribe to individual modules per rooftop. Stop paying for software your team doesn't use. Add or remove modules anytime — month to month.</p>
-                </div>
-                <div class="diff-card reveal">
-                    <h3>AI-Native, Not AI-Bolted</h3>
-                    <p>Intelligence is embedded in the platform architecture — not a chatbot bolted onto a system built in the 2000s. Every data flow is designed for AI from day one.</p>
-                </div>
-                <div class="diff-card reveal">
-                    <h3>Dealer-Agnostic Strategy</h3>
-                    <p>Competitors force all dealers into one strategy. VinFlow accommodates any approach through configurable profiles — salvage title dealers operate entirely differently from retail.</p>
-                </div>
-                <div class="diff-card reveal">
-                    <h3>Multi-Rooftop from Day One</h3>
-                    <p>Cascading settings, centralized user management, and cross-store analytics. Built for groups scaling from 1 to 100 rooftops without architecture changes.</p>
-                </div>
+                <div class="diff-card reveal"><h3>Truly Modular Pricing</h3><p>Subscribe to individual modules per rooftop. Stop paying for software your team doesn't use. Add or remove modules anytime — month to month.</p></div>
+                <div class="diff-card reveal"><h3>AI-Native, Not AI-Bolted</h3><p>Intelligence is embedded in the platform architecture — not a chatbot bolted onto a system built in the 2000s. Every data flow is designed for AI from day one.</p></div>
+                <div class="diff-card reveal"><h3>Dealer-Agnostic Strategy</h3><p>Competitors force all dealers into one strategy. VinFlow accommodates any approach through configurable profiles — salvage title dealers operate entirely differently from retail.</p></div>
+                <div class="diff-card reveal"><h3>Multi-Rooftop from Day One</h3><p>Cascading settings, centralized user management, and cross-store analytics. Built for groups scaling from 1 to 100 rooftops without architecture changes.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- COMPARE -->
     <section id="compare" class="compare-section">
         <div class="container">
             <div class="section-label reveal">How We Compare</div>
             <h2 class="section-title reveal">See the difference.</h2>
             <p class="section-subtitle reveal">VinFlow combines modern cloud-native architecture with AI intelligence and true modular flexibility.</p>
-
             <div class="compare-table-wrap reveal">
                 <table class="compare-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th class="highlight">VinFlow</th>
-                            <th>Legacy DMS Tools</th>
-                            <th>Inventory-Only Tools</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Feature</th><th class="highlight">VinFlow</th><th>Legacy DMS Tools</th><th>Inventory-Only Tools</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td>AI-native architecture</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="partial">Bolted on</span></td>
-                            <td><span class="partial">Limited</span></td>
-                        </tr>
-                        <tr>
-                            <td>Modular per-module pricing</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                            <td><span class="partial">Limited</span></td>
-                        </tr>
-                        <tr>
-                            <td>Configurable dealer strategy</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                            <td><span class="partial">Partial</span></td>
-                        </tr>
-                        <tr>
-                            <td>Specialized AI agents</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Autonomous AI buying agent</td>
-                            <td><span class="check">Roadmap</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Floorplan cost tracking with alerts</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="partial">Basic</span></td>
-                            <td><span class="partial">Basic</span></td>
-                        </tr>
-                        <tr>
-                            <td>Multi-rooftop support</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="partial">Limited</span></td>
-                        </tr>
-                        <tr>
-                            <td>Month-to-month contracts</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                            <td><span class="partial">6mo min</span></td>
-                        </tr>
-                        <tr>
-                            <td>FTC Safeguards compliance</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="partial">Varies</span></td>
-                            <td><span class="cross">&#10005;</span></td>
-                        </tr>
-                        <tr>
-                            <td>Open API ecosystem</td>
-                            <td><span class="check">&#10003;</span></td>
-                            <td><span class="partial">Limited</span></td>
-                            <td><span class="partial">Limited</span></td>
-                        </tr>
+                        <tr><td>AI-native architecture</td><td><span class="check">&#10003;</span></td><td><span class="partial">Bolted on</span></td><td><span class="partial">Limited</span></td></tr>
+                        <tr><td>Modular per-module pricing</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">Limited</span></td></tr>
+                        <tr><td>Configurable dealer strategy</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">Partial</span></td></tr>
+                        <tr><td>Specialized AI agents</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td></tr>
+                        <tr><td>Autonomous AI buying agent</td><td><span class="check">Roadmap</span></td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td></tr>
+                        <tr><td>Floorplan cost tracking with alerts</td><td><span class="check">&#10003;</span></td><td><span class="partial">Basic</span></td><td><span class="partial">Basic</span></td></tr>
+                        <tr><td>Multi-rooftop support</td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="partial">Limited</span></td></tr>
+                        <tr><td>Month-to-month contracts</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">6mo min</span></td></tr>
+                        <tr><td>FTC Safeguards compliance</td><td><span class="check">&#10003;</span></td><td><span class="partial">Varies</span></td><td><span class="cross">&#10005;</span></td></tr>
+                        <tr><td>Open API ecosystem</td><td><span class="check">&#10003;</span></td><td><span class="partial">Limited</span></td><td><span class="partial">Limited</span></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- SECURITY -->
     <section id="security">
         <div class="container">
             <div class="section-label reveal">Enterprise Security</div>
             <h2 class="section-title reveal">Your data is our highest priority.</h2>
             <p class="section-subtitle reveal">Dealerships handle sensitive financial data daily. VinFlow is engineered to meet SOC 2 and FTC Safeguards Rule compliance from day one — not as an afterthought.</p>
-
             <div class="security-grid">
-                <div class="security-card reveal">
-                    <div class="security-icon">&#x1F512;</div>
-                    <h3>AES-256 Encryption</h3>
-                    <p>All sensitive data encrypted at rest and in transit with AES-256-GCM.</p>
-                </div>
-                <div class="security-card reveal">
-                    <div class="security-icon">&#x1F6E1;</div>
-                    <h3>FTC Safeguards</h3>
-                    <p>Mapped to all 9 requirements of 16 CFR 314 with documented evidence.</p>
-                </div>
-                <div class="security-card reveal">
-                    <div class="security-icon">&#x1F465;</div>
-                    <h3>Role-Based Access</h3>
-                    <p>Granular RBAC with full multi-tenant isolation per dealership.</p>
-                </div>
-                <div class="security-card reveal">
-                    <div class="security-icon">&#x1F4DD;</div>
-                    <h3>Complete Audit Trail</h3>
-                    <p>Every action logged with user, timestamp, IP, and context for compliance.</p>
-                </div>
+                <div class="security-card reveal"><div class="security-icon">&#x1F512;</div><h3>AES-256 Encryption</h3><p>All sensitive data encrypted at rest and in transit with AES-256-GCM.</p></div>
+                <div class="security-card reveal"><div class="security-icon">&#x1F6E1;</div><h3>FTC Safeguards</h3><p>Mapped to all 9 requirements of 16 CFR 314 with documented evidence.</p></div>
+                <div class="security-card reveal"><div class="security-icon">&#x1F465;</div><h3>Role-Based Access</h3><p>Granular RBAC with full multi-tenant isolation per dealership.</p></div>
+                <div class="security-card reveal"><div class="security-icon">&#x1F4DD;</div><h3>Complete Audit Trail</h3><p>Every action logged with user, timestamp, IP, and context for compliance.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ARCHITECTURE -->
-    <section class="arch-section" style="background: var(--bg-secondary);">
+    <section class="arch-section">
         <div class="container">
             <div class="section-label reveal">Architecture</div>
             <h2 class="section-title reveal">Modern stack. Open ecosystem.</h2>
             <p class="section-subtitle reveal">Built on production-grade infrastructure designed for performance, scalability, and clean third-party integration.</p>
-
             <div class="arch-grid">
-                <div class="arch-card reveal">
-                    <h3>Cloud-Native</h3>
-                    <p>Next.js frontend on Vercel, NestJS API on Railway, PostgreSQL with Prisma ORM. No self-hosted servers, no maintenance windows.</p>
-                </div>
-                <div class="arch-card reveal">
-                    <h3>Provider-Agnostic Adapters</h3>
-                    <p>DMS integrations use an adapter pattern — plug in any DMS (Tekion, CDK, Reynolds) without changing core logic. Same pattern for data providers.</p>
-                </div>
-                <div class="arch-card reveal">
-                    <h3>API-First Design</h3>
-                    <p>Every feature is API-backed. Open ecosystem for third-party integrations with per-dealership credential isolation and encrypted storage.</p>
-                </div>
+                <div class="arch-card reveal"><h3>Cloud-Native</h3><p>Next.js frontend on Vercel, NestJS API on Railway, PostgreSQL with Prisma ORM. No self-hosted servers, no maintenance windows.</p></div>
+                <div class="arch-card reveal"><h3>Provider-Agnostic Adapters</h3><p>DMS integrations use an adapter pattern — plug in any DMS (Tekion, CDK, Reynolds) without changing core logic. Same pattern for data providers.</p></div>
+                <div class="arch-card reveal"><h3>API-First Design</h3><p>Every feature is API-backed. Open ecosystem for third-party integrations with per-dealership credential isolation and encrypted storage.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- EARLY ACCESS -->
     <section id="early-access" class="ea-section">
         <div class="container">
             <div class="ea-layout">
@@ -1045,134 +424,41 @@
                     <div class="section-label">Early Access</div>
                     <h2 class="section-title">Be among the first.</h2>
                     <p class="section-subtitle">Tell us about your operation and we'll reach out with a personalized demo when VinFlow is ready for your dealership.</p>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;">For partnership or integration inquiries:<br>
-                        <a href="mailto:partners@vinflow.com" style="color: var(--accent); text-decoration: none;">partners@vinflow.com</a>
-                    </p>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">General inquiries:<br>
-                        <a href="mailto:sales@vinflow.com" style="color: var(--accent); text-decoration: none;">sales@vinflow.com</a>
-                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem;">For partnership or integration inquiries:<br><a href="mailto:partners@vinflow.com" style="color: var(--accent); text-decoration: none;">partners@vinflow.com</a></p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">General inquiries:<br><a href="mailto:sales@vinflow.com" style="color: var(--accent); text-decoration: none;">sales@vinflow.com</a></p>
                 </div>
                 <div class="reveal">
                     <form class="ea-form" id="ea-form" method="POST">
-                        <div>
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div>
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                        <div>
-                            <label for="email">Work Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div>
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div>
-                            <label for="dealerName">Dealership Name *</label>
-                            <input type="text" id="dealerName" name="dealerName" required>
-                        </div>
-                        <div>
-                            <label for="state">State *</label>
-                            <select id="state" name="state" required>
-                                <option value="">Select state</option>
-                                <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="dealershipType">Dealership Type *</label>
-                            <select id="dealershipType" name="dealershipType" required>
-                                <option value="">Select type</option>
-                                <option>Franchise</option>
-                                <option>Independent</option>
-                                <option>Wholesaler</option>
-                                <option>Franchise Group</option>
-                                <option>Independent Group</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="rooftops">Number of Rooftops *</label>
-                            <select id="rooftops" name="rooftops" required>
-                                <option value="">Select</option>
-                                <option>1</option>
-                                <option>2–5</option>
-                                <option>6–15</option>
-                                <option>16–50</option>
-                                <option>50+</option>
-                            </select>
-                        </div>
+                        <div><label for="firstName">First Name *</label><input type="text" id="firstName" name="firstName" required></div>
+                        <div><label for="lastName">Last Name *</label><input type="text" id="lastName" name="lastName" required></div>
+                        <div><label for="email">Work Email *</label><input type="email" id="email" name="email" required></div>
+                        <div><label for="phone">Phone Number *</label><input type="tel" id="phone" name="phone" required></div>
+                        <div><label for="dealerName">Dealership Name *</label><input type="text" id="dealerName" name="dealerName" required></div>
+                        <div><label for="state">State *</label><select id="state" name="state" required><option value="">Select state</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select></div>
+                        <div><label for="dealershipType">Dealership Type *</label><select id="dealershipType" name="dealershipType" required><option value="">Select type</option><option>Franchise</option><option>Independent</option><option>Wholesaler</option><option>Franchise Group</option><option>Independent Group</option></select></div>
+                        <div><label for="rooftops">Number of Rooftops *</label><select id="rooftops" name="rooftops" required><option value="">Select</option><option>1</option><option>2-5</option><option>6-15</option><option>16-50</option><option>50+</option></select></div>
                         <button type="submit">Request Early Access</button>
                     </form>
-                    <div class="form-success" id="form-success">
-                        <h3>You're on the list.</h3>
-                        <p>We'll reach out with a personalized demo when VinFlow is ready for your dealership.</p>
-                    </div>
+                    <div class="form-success" id="form-success"><h3>You're on the list.</h3><p>We'll reach out with a personalized demo when VinFlow is ready for your dealership.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-inner">
-            <div class="footer-left">
-                <span class="nav-logo-mark" style="width:22px;height:22px;font-size:0.7rem;border-radius:5px;">V</span>
-                &copy; 2026 VinFlow Inc. All rights reserved.
-            </div>
-            <div class="footer-links">
-                <a href="mailto:partners@vinflow.com">Partnerships</a>
-                <a href="mailto:sales@vinflow.com">Contact</a>
-            </div>
+            <div class="footer-left"><span class="nav-logo-mark" style="width:22px;height:22px;font-size:0.7rem;border-radius:5px;">V</span>&copy; 2026 VinFlow Inc. All rights reserved.</div>
+            <div class="footer-links"><a href="mailto:partners@vinflow.com">Partnerships</a><a href="mailto:sales@vinflow.com">Contact</a></div>
         </div>
     </footer>
 
     <script>
-        // Mobile nav toggle
-        document.querySelector('.nav-mobile-toggle').addEventListener('click',function(){
-            document.querySelector('.nav-links').classList.toggle('open');
-        });
-
-        // Scroll reveal
-        const obs=new IntersectionObserver(function(entries){
-            entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');}});
-        },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelector('.nav-mobile-toggle').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('open');});
+        var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
         document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(function(a){
-            a.addEventListener('click',function(e){
-                e.preventDefault();
-                var t=document.querySelector(this.getAttribute('href'));
-                if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
-                document.querySelector('.nav-links').classList.remove('open');
-            });
-        });
-
-        // Form submission
-        var form=document.getElementById('ea-form');
-        var success=document.getElementById('form-success');
-        form.addEventListener('submit',function(e){
-            e.preventDefault();
-            var btn=form.querySelector('button');
-            btn.textContent='Sending...';
-            btn.disabled=true;
-            var data=Object.fromEntries(new FormData(form));
-            fetch('https://formspree.io/f/mpqywrej',{
-                method:'POST',
-                headers:{'Content-Type':'application/json','Accept':'application/json'},
-                body:JSON.stringify(data)
-            }).then(function(res){
-                if(!res.ok)throw new Error('fail');
-                form.style.display='none';
-                success.style.display='block';
-            }).catch(function(){
-                btn.textContent='Request Early Access';
-                btn.disabled=false;
-                alert('Something went wrong. Please try again.');
-            });
-        });
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});document.querySelector('.nav-links').classList.remove('open');});});
+        var form=document.getElementById('ea-form');var success=document.getElementById('form-success');
+        form.addEventListener('submit',function(e){e.preventDefault();var btn=form.querySelector('button');btn.textContent='Sending...';btn.disabled=true;var data=Object.fromEntries(new FormData(form));fetch('https://formspree.io/f/mpqywrej',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)}).then(function(res){if(!res.ok)throw new Error('fail');form.style.display='none';success.style.display='block';}).catch(function(){btn.textContent='Request Early Access';btn.disabled=false;alert('Something went wrong. Please try again.');});});
     </script>
 </body>
 </html>
